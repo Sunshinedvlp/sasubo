@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-4">
+          <div class="card text-center" style="width: 18rem;">
+                    <div class="card-header">
+                        <h1>Delete agent</h1>
+                    </div>
+                    <form method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                  <div class="col-md-8">
+                                          <div class="card">
+                                                {% if result|length > 0 %}
+                                                  <select  type="number" required name="nomer" id="nomer" class="form-select">
+                                                          <option disabled selected>Viberi agenta</option>
+                                                    {% for el in result %}
+                                                          <option value="{{ el.nomer }}">{{ el.name }} - ({{ el.nomer }})</option>
+                                                    {% endfor %}
+                                                  </select>
+                                                {% else %}
+                                                  <select name="nomer" id="nomer" class="form-select" aria-label="Disabled select example" disabled>
+                                                          <option selected value="Nety agentov">Nety agentov</option>
+                                                  </select>
+                                                {% endif %}
+                                          </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                          <div class="card " >
+                                                <input type="submit" id="sumbitdel" class="btn btn-danger" value="Del" disabled>
+                                         </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+          </div>
+
+           <script>
+                $('select[name=nomer]').change(function() {
+                  if ($("#nomer :selected").val() == 'Nety agentov') {
+                    $('input[type="submit"]').attr('disabled', 'disabled');
+                  } else {
+                    $('input[type="submit"]').removeAttr('disabled');
+                  }
+                });
+            </script>
+
+      </div>
+      <div class="col-sm-4">
+          <div class="card text-center" style="width: 18rem;">
+              <div class="card-header">
+                        <h1>Delete vse</h1>
+              </div>
+              <div class="card-body">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Del vse
+                </button>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-2">
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal - vsplivayuscee okno -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Udalit vse zapisi?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Eto udalit vse zapisi v baze dannih, vostanovit ih budet nevozmozhno, obicho udalyaut vse zapisi v nachale novogo mesyaca, vi soglasni?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/del/vse" class="btn btn-danger " role="button">UDALIT VSE!</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

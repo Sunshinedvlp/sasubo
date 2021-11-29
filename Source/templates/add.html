@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container mt-5">
+  <div class="card text-center" style="width: 18rem;">
+    <div class="card-header">
+            <h1>Add agent</h1>
+    </div>
+
+    <div class="card-body">
+
+            <form method="post">
+              <input class="form-control" type="number" required name="nomer" id="nomer" placeholder="Number" >
+              <input class="form-control" type="text" required name="name" id="name" placeholder="Name">
+              <input class="form-control" type="number" required name="cold" id="cold" placeholder="Cold">
+              <input class="form-control" type="number" required name="hot" id="hot" placeholder="Hot">
+                <select required  name="team" id="team" class="form-select">
+                  <option disabled selected>Team</option>
+                  <option value="ENG">ENG</option>
+                  <option value="GER">GER</option>
+                  <option value="POL">POL</option>
+                </select>
+
+              <div class="d-grid gap-2">
+                 <input type="submit" class="btn btn-success" value="Add">
+              </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

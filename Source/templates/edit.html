@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<div class="container mt-5">
+  <div class="card text-center" style="width: 18rem;">
+    <div class="card-header">
+            <h1>EDIT</h1>
+    </div>
+
+    <div class="card-body">
+
+            <form method="POST">
+                {% if result|length > 0 %}
+                    <select  type="number" required name="nomer" id="nomer" class="form-select" >
+                    <option disabled selected>Viberi agenta</option>
+                        {% for el in result %}
+                              <option value="{{ el.nomer }};{{ el.hot }};{{ el.cold }}"> {{ el.name }} - ({{ el.nomer }})</option>
+                        {% endfor %}
+                    </select>
+
+                      <div class="row">
+                              <div class="col-sm-2">
+                                   <label for="hot" class="col-form-label">COLD:</label>
+                               </div>
+                               <div class="col">
+                                    <input type="number" required name="cold" id="cold" class="form-control">
+                               </div>
+                      </div>
+                      <div class="row">
+                           <div class="col-sm-2">
+                              <label for="hot" class="col-form-label">HOT:</label>
+                           </div>
+                           <div class="col">
+                                <input type="number" required name="hot" id="hot" class="form-control" >
+                           </div>
+                      </div>
+
+                        <input type="hidden" required name="no_user" id="no_user" class="form-control">
+
+
+
+                        <script>
+                             nomer.onchange = function(){
+                                const arrayblya = nomer.value.split(';');
+                                 hot.value = arrayblya[1];
+                                 cold.value = arrayblya[2];
+                                 no_user.value = arrayblya[0]
+                                 }
+
+                             hot.onchange = function(){
+                             if (hot.value < "0") {
+                              applybtn.disabled = true;
+                               }
+                             else {
+                              applybtn.disabled = false;
+                               }
+                             }
+
+                             cold.onchange = function(){
+                             if (cold.value < "0") {
+                              applybtn.disabled = true;
+                               }
+                             else {
+                              applybtn.disabled = false;
+                               }
+                             }
+
+                         </script>
+
+
+
+                          <div class="d-grid gap-2">
+                             <input id="applybtn" type="submit"  class="btn btn-warning" value="Apply">
+                          </div>
+
+
+                {% else %}
+                    <select name="nomer" id="nomer" class="form-select" aria-label="Disabled select example" disabled>
+                           <option selected value="Nety agentov">Nety agentov</option>
+                    </select>
+                {% endif %}
+
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+

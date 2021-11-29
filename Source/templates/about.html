@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Resultati
+{% endblock %}
+
+{% block body %}
+<meta http-equiv="refresh" content="60"> <!-- Reload cherez 60 sec = 1 min -->
+<div class="container-fluid">
+
+    <div class="row text-center">
+        {% if result|length > 0 %}
+        <div class="col-sm-4">
+            {% if viborkaEA == (None,) %}
+                        <h3>ИНГЛИШ</h3>
+            <div class="d-flex flex-row flex-wrap">
+                <div class="card col-12" >
+                            <img src="https://data.whicdn.com/images/240499357/original.gif"></img>
+                            <h3>Faugh a Ballagh!</h3>
+                </div>
+            </div>
+            {% else %}
+                         <h3> ИНГЛИШ {{ viborkaEA[2] }} ({{ viborkaEA[0] }}❄,{{ viborkaEA[1] }}🔥) </h3>
+            <div class="d-flex flex-row flex-wrap">
+               {% for el in result %}
+
+                    {% if el.team == "ENG" %}
+
+                        {% if el.wincold == 1 %}
+                        <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                            <div class="card-header text-white"  style=" background-image: url('https://i.gifer.com/7isN.gif');  background-size: 100% 300%;">
+                                <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                          <div class="card-body bg-light text-dark">
+                            <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                          </div>
+                        </div>
+
+                        {% elif el.winsum == 1 %}
+
+                         <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                            <div class="card-header text-light"  style=" background-image: url('https://cdn.dribbble.com/users/23375/screenshots/1315230/firedribbble.gif'); background-size: 100% 170%; ">
+                                <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                          <div class="card-body bg-light text-dark">
+                            <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                          </div>
+                        </div>
+
+
+                        {% else %}
+                        <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                            <div class="card-header bg-primary text-white">
+                                <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                          <div class="card-body bg-light text-dark">
+                            <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                          </div>
+                        </div>
+                        {% endif %}
+
+                    {% endif %}
+
+            {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col-sm-4">
+                {% if viborkaGA == (None,) %}
+            <h3> НЕМЦЫЫЫ</h3>
+            <div class="d-flex flex-row flex-wrap">
+                <div class="card col-12" >
+                            <img src="https://data.whicdn.com/images/240499357/original.gif"></img>
+                            <h3>Deus Vult!</h3>
+                </div>
+            </div>
+                {% else %}
+            <h3> НЕМЦЫЫЫ {{ viborkaGA[2] }} ({{ viborkaGA[0] }}❄,{{ viborkaGA[1] }}🔥)</h3>
+            <div class="d-flex flex-row flex-wrap">
+                            {% for el in result %}
+                                {% if el.team == "GER" %}
+                                      {% if el.wincold == 1 %}
+                                     <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                        <div class="card-header text-white"  style=" background-image: url('https://i.gifer.com/7isN.gif');  background-size: 100% 300%;">
+                                            <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                                      <div class="card-body bg-light text-dark">
+                                        <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                                      </div>
+                                    </div>
+                                    {% elif el.winsum == 1 %}
+                                     <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                        <div class="card-header text-light"  style=" background-image: url('https://cdn.dribbble.com/users/23375/screenshots/1315230/firedribbble.gif'); background-size: 100% 170%; ">
+                                            <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                                      <div class="card-body bg-light text-dark">
+                                        <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                                      </div>
+                                    </div>
+
+                                    {% else %}
+                                    <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                        <div class="card-header bg-warning text-dark">
+                                            <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                                      <div class="card-body bg-light text-dark">
+                                        <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                                      </div>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                        {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col-sm-4 ">
+            {% if viborkaPA == (None,) %}
+            <h3>PSHE_PSHE</h3>
+            <div class="d-flex flex-row flex-wrap">
+                <div class="card col-12" >
+                            <img src="https://data.whicdn.com/images/240499357/original.gif"></img>
+                            <h3>Za wolność naszą i waszą!</h3>
+                </div>
+            </div>
+            {% else %}
+                        <h3> ПШЕКИ {{ viborkaPA[2] }} ({{ viborkaPA[0] }}❄,{{ viborkaPA[1] }}🔥)</h3>
+                <div class="d-flex flex-row flex-wrap">
+                {% for el in result %}
+                        {% if el.team == "POL" %}
+                            {% if el.wincold == 1 %}
+                            <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                <div class="card-header text-white"  style=" background-image: url('https://i.gifer.com/7isN.gif');  background-size: 100% 300%;">
+                                    <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                              <div class="card-body bg-light text-dark">
+                                <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                              </div>
+                            </div>
+                            {% elif el.winsum == 1 %}
+                             <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                <div class="card-header text-light"  style=" background-image: url('https://cdn.dribbble.com/users/23375/screenshots/1315230/firedribbble.gif'); background-size: 100% 170%; ">
+                                    <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                              <div class="card-body bg-light text-dark">
+                                <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                              </div>
+                            </div>
+
+                            {% else %}
+                            <div class="shadow col-md-5 m-2 rounded" style="max-width: 25rem;">
+                                <div class="card-header bg-danger text-white">
+                                    <h5>{{ el.name }} ({{ el.nomer }}) </h5></div>
+                              <div class="card-body bg-light text-dark">
+                                <h5 class="card-title">{{ el.sum }} ({{ el.cold }}❄, {{ el.hot }}🔥)</h5>
+                              </div>
+                            </div>
+                            {% endif %}
+
+                        {% endif %}
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="container-fluid">
+            <p> POKA PUSTO =`(</p>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6166bb57-aad0-4ceb-83f8-3ce84e47245c/d8qqowk-ee4cd976-aedc-46b5-b905-6ecd88ee252f.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjE2NmJiNTctYWFkMC00Y2ViLTgzZjgtM2NlODRlNDcyNDVjXC9kOHFxb3drLWVlNGNkOTc2LWFlZGMtNDZiNS1iOTA1LTZlY2Q4OGVlMjUyZi5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.7C85SxqHW38cSpvodM97fJP15VIkSR8OH6fkxc3Q9og"></img>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
